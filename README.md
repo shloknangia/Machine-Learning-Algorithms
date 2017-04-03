@@ -1,4 +1,4 @@
-ud120-projects
+Machine Learning Algorithms
 ==============
 
-Starter project code for students taking Udacity ud120
+Different Algorithms and ML minor projects
