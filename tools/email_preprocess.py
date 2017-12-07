@@ -2,7 +2,7 @@
 
 import pickle
 import cPickle
-import numpy
+#import numpy
 
 from sklearn import cross_validation
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -29,11 +29,11 @@ def preprocess(words_file = "../tools/word_data.pkl", authors_file="../tools/ema
 
     ### the words (features) and authors (labels), already largely preprocessed
     ### this preprocessing will be repeated in the text learning mini-project
-    authors_file_handler = open(authors_file, "r")
+    authors_file_handler = open(authors_file, "rb")
     authors = pickle.load(authors_file_handler)
     authors_file_handler.close()
 
-    words_file_handler = open(words_file, "r")
+    words_file_handler = open(words_file, "rb")
     word_data = cPickle.load(words_file_handler)
     words_file_handler.close()
 
@@ -53,7 +53,7 @@ def preprocess(words_file = "../tools/word_data.pkl", authors_file="../tools/ema
 
     ### feature selection, because text is super high dimensional and 
     ### can be really computationally chewy as a result
-    selector = SelectPercentile(f_classif, percentile=10)
+    selector = SelectPercentile(f_classif, percentile=10) #10 by default
     selector.fit(features_train_transformed, labels_train)
     features_train_transformed = selector.transform(features_train_transformed).toarray()
     features_test_transformed  = selector.transform(features_test_transformed).toarray()
