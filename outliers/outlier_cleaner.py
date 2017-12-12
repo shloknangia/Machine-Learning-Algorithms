@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+import math
 
 def outlierCleaner(predictions, ages, net_worths):
     """
@@ -14,7 +14,20 @@ def outlierCleaner(predictions, ages, net_worths):
     cleaned_data = []
 
     ### your code goes here
+    error  = []
+    for i in range(len(predictions)):
+        error.append(abs(predictions[i] - net_worths[i]))
 
-    
+    error.sort()
+    key = int(math.floor(len(error) * 0.9)) 
+    excluded = error[key: ]
+
+    for k in range(len(predictions)):
+        e = abs(predictions[k] - net_worths[k])
+        if e in excluded:
+            pass
+        else:
+            cleaned_data.append([ages[k], net_worths[k], e])
+
+
     return cleaned_data
-
