@@ -90,3 +90,11 @@ try:
     Draw(pred, finance_features, poi, mark_poi=False, name="clusters2.pdf", f1_name=feature_1, f2_name=feature_2)
 except NameError:
     print "no predictions object named pred found, no clusters to plot"
+
+
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+
+new_sal = scaler.fit_transform(finance_features)
+test_data = numpy.array([[200000., 1000000.]])
+print scaler.transform(test_data)
